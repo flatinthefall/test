@@ -16,6 +16,6 @@ public class LibraryTest {
 
     @Test public void testErrorMethod() {
         Library classUnderTest = new Library();
-        assertFalse("error test", classUnderTest.errorMethod());
+        assertTrue("error test", classUnderTest.errorMethod());
     }
 }
