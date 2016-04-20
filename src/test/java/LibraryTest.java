@@ -12,6 +12,10 @@ public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    }
+
+    @Test public void testErrorMethod() {
+        Library classUnderTest = new Library();
         assertFalse("error test", classUnderTest.errorMethod());
     }
 }
