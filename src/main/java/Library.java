@@ -21,7 +21,7 @@ public class Library {
     public boolean randomTest(){
     	List<String> list = new ArrayList<>();
     	for(int i = 0; i < 1000; i++){
-    		String str = RandomStringUtils.randomAlphanumeric(2);
+    		String str = RandomStringUtils.randomAlphanumeric(11);
     		if(list.contains(str)){
     			return false;
     		}
