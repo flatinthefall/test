@@ -1,5 +1,9 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
 /*
@@ -17,5 +21,15 @@ public class LibraryTest {
     @Test public void testErrorMethod() {
         Library classUnderTest = new Library();
         assertFalse("error test", classUnderTest.errorMethod());
+    }
+
+    @Test public void randomTest() {
+        Library classUnderTest = new Library();
+    	List<String> list = new ArrayList<>();
+    	for(int i = 0; i < 1000; i++){
+    		String str = RandomStringUtils.randomAlphanumeric(11);
+    		System.out.println(str);
+    	}
+        assertTrue("random error",true);
     }
 }
