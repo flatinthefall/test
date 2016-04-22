@@ -15,14 +15,13 @@ public class Library {
     }
 
     public boolean errorMethod(){
-    	System.out.println("xx");
     	return false;
     }
 
     public boolean randomTest(){
     	List<String> list = new ArrayList<>();
-    	for(int i = 0; i < 10000; i++){
-    		String str = RandomStringUtils.randomAlphanumeric(11);
+    	for(int i = 0; i < 1000; i++){
+    		String str = RandomStringUtils.randomAlphanumeric(2);
     		if(list.contains(str)){
     			return false;
     		}
