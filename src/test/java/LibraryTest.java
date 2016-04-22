@@ -21,6 +21,7 @@ public class LibraryTest {
 
     @Test public void randomTest() {
         Library classUnderTest = new Library();
+
         assertTrue("random error",classUnderTest.randomTest());
     }
 }
