@@ -11,13 +11,15 @@
 apply plugin: 'java'
 apply plugin: 'jacoco'
 
-jacoco {
-    toolVersion = '0.7.1.201405082137'
-}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     mavenCentral()
+}
+
+jacoco {
+    toolVersion = "0.7.+"
+    // reportsDir = file("$buildDir/reports/jacoco")
 }
 
 // In this section you declare the dependencies for your production and test code
