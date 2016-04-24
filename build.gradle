@@ -18,6 +18,7 @@ buildscript {
     }
     dependencies {
       classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
+      classpath 'org.ajoberstar:gradle-git:1.1.0'
     }
 
 
@@ -26,6 +27,9 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'org.sonarqube'
+
+import org.ajoberstar.grgit.*
+ext.repo = Grgit.open(project.file('.'))
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -54,7 +58,7 @@ dependencies {
 
 sonarqube {
     properties {
-    	def branch = gitBranch()
+    	def branch = ${ext.repo.branch.current.name}
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
@@ -67,11 +71,3 @@ sonarqube {
     }
 }
 
-def gitBranch() {
-    def branch = ""
-    def proc = "git rev-parse --abbrev-ref HEAD".execute()
-    proc.in.eachLine { line -> branch = line }
-    proc.err.eachLine { line -> println line }
-    proc.waitFor()
-    branch
-}
