@@ -51,7 +51,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-def branch = project.hasProperty('DGitBranch')
+def branch = project.DGitBranch
 
 sonarqube {
     properties {
