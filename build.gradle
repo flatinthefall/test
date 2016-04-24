@@ -49,7 +49,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-def branch = $GIT_BRANCH
+def branch = getWorkingBranch()
 
 sonarqube {
     properties {
@@ -63,4 +63,13 @@ sonarqube {
         property "sonar.jdbc.password", "1234"
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
     }
+}
+
+def getWorkingBranch() {
+    // Triple double-quotes for the breaklines
+    def workingBranch = """git --git-dir=${rootDir}/git
+                               --work-tree=${rootDir}/..
+                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
+    print "Working branch: " + workingBranch
+    return workingBranch
 }
