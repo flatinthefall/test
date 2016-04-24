@@ -18,7 +18,10 @@ buildscript {
     }
     dependencies {
       classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
+      classpath 'org.ajoberstar:gradle-git:1.4.2'
     }
+
+
 }
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -47,8 +50,9 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
 }
-
-def branch = "git rev-parse --abbrev-ref HEAD".execute().in.text.trim()
+import org.ajoberstar.grgit.*
+ext.repo = Grgit.open(project.file('.git'))
+def branch = ext.repo.branch.current.name.replaceAll("/", ".")
 
 sonarqube {
     properties {
@@ -61,5 +65,7 @@ sonarqube {
         property "sonar.jdbc.username", "postgres"
         property "sonar.jdbc.password", "1234"
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+        property "sonar.sourceEncoding", "UTF-8"
     }
 }
+
