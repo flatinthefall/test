@@ -51,10 +51,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-def branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
 
 sonarqube {
     properties {
+        def branch = ${GitBranch}
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
