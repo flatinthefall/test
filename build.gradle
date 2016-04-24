@@ -52,15 +52,10 @@ dependencies {
 }
 import org.ajoberstar.grgit.*
 ext.repo = Grgit.open(project.file('.git'))
-def branch = ext.repo.branch.current.name
-
-
-System.out.println(ext.repo.branch.current)
-
+def branch = ext.repo.branch.current.name.replaceAll("/", ".")
 
 sonarqube {
     properties {
-
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
@@ -70,6 +65,7 @@ sonarqube {
         property "sonar.jdbc.username", "postgres"
         property "sonar.jdbc.password", "1234"
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+        property "sonar.sourceEncoding", "UTF-8"
     }
 }
 
