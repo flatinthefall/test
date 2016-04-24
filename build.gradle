@@ -54,7 +54,7 @@ dependencies {
 
 sonarqube {
     properties {
-    	def branch = "git symbolic-ref --short HEAD".execute().in.text.trim()
+    	def branch = gitBranch()
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
@@ -65,4 +65,13 @@ sonarqube {
         property "sonar.jdbc.password", "1234"
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
     }
+}
+
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
 }
