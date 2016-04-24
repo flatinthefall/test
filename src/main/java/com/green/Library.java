@@ -34,4 +34,11 @@ public class Library {
     	System.out.println("success");
     	return true;
     }
+
+    public void running(){
+    	String str = "string";
+    	if(str.length() == 5){
+    		System.out.println("5");
+    	}
+    }
 }
