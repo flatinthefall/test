@@ -1,3 +1,4 @@
+package com.green;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
