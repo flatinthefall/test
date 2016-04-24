@@ -18,6 +18,7 @@ buildscript {
     }
     dependencies {
       classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
+      classpath 'org.ajoberstar:gradle-git:1.1.0'
     }
 
 
@@ -27,6 +28,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'org.sonarqube'
 
+// In this section you declare where to find the dependencies of your project
 repositories {
     mavenCentral()
 }
@@ -49,7 +51,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-def branch = ${GIT_BRANCH}
+def branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
 
 sonarqube {
     properties {
@@ -64,3 +66,4 @@ sonarqube {
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
     }
 }
+
