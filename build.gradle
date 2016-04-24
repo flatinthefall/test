@@ -54,7 +54,9 @@ import org.ajoberstar.grgit.*
 ext.repo = Grgit.open(project.file('.'))
 def branch = ext.repo.branch.current.name
 
-System.out.println("git rev-parse --abbrev-ref HEAD".execute())
+
+System.out.println(ext.repo.branch.current.name)
+
 
 sonarqube {
     properties {
