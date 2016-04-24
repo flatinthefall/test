@@ -55,7 +55,7 @@ dependencies {
 
 sonarqube {
     properties {
-    	def branch = getWorkingBranch().name
+    	def branch = getBranchName()
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
@@ -66,4 +66,8 @@ sonarqube {
         property "sonar.jdbc.password", "1234"
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
     }
+}
+
+task getBranchName(type: GitBranchList) << {
+    getWorkingBranch().name
 }
