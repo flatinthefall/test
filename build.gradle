@@ -51,7 +51,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 import org.ajoberstar.grgit.*
-ext.repo = Grgit.open(project.file('.'))
+ext.repo = Grgit.open(project.file('.git'))
 def branch = ext.repo.branch.current.name
 
 
