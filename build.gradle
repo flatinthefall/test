@@ -49,11 +49,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-
+def branch = $GIT_BRANCH
 
 sonarqube {
     properties {
-    	def branch = $GIT_BRANCH
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
