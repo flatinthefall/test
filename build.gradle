@@ -49,7 +49,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-def branch = $GIT_BRANCH
+def branch = ${GIT_BRANCH}
 
 sonarqube {
     properties {
