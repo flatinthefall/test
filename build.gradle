@@ -55,7 +55,7 @@ ext.repo = Grgit.open(project.file('.'))
 def branch = ext.repo.branch.current.name
 
 
-System.out.println(ext.repo.branch.current.name)
+System.out.println(ext.repo.branch.current)
 
 
 sonarqube {
