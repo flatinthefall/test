@@ -52,7 +52,7 @@ dependencies {
 }
 import org.ajoberstar.grgit.*
 ext.repo = Grgit.open(project.file('.'))
-def branch = ext.repo.branch.current.name
+def branch = ext.repo.branch.current
 
 sonarqube {
     properties {
