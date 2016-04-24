@@ -28,9 +28,6 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'org.sonarqube'
 
-import org.ajoberstar.grgit.*
-ext.repo = Grgit.open(project.file('.'))
-
 // In this section you declare where to find the dependencies of your project
 repositories {
     mavenCentral()
@@ -58,7 +55,7 @@ dependencies {
 
 sonarqube {
     properties {
-    	def branch = ${ext.repo.branch.current.name}
+    	def branch = getWorkingBranch().name
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
@@ -70,4 +67,3 @@ sonarqube {
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
     }
 }
-
