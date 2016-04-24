@@ -20,7 +20,7 @@ buildscript {
       classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
     }
 
-    def branch = "git symbolic-ref --short HEAD".execute().in.text.trim()
+
 }
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -54,6 +54,7 @@ dependencies {
 
 sonarqube {
     properties {
+    	def branch = "git symbolic-ref --short HEAD".execute().in.text.trim()
         property "sonar.projectKey" , "my:" + branch
         property "sonar.projectName" , branch
         property "sonar.projectVersion" , "1.0"
